@@ -1,0 +1,8 @@
+<div class="header">
+  <p class="circle-big"></p>
+  <p
+    *ngFor="let item of this.colorCircleSmall"
+    [ngStyle]="{ background: item }"
+    class="circle-small"
+  ></p>
+</div>

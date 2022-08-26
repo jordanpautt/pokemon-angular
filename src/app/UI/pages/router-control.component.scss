@@ -1,0 +1,19 @@
+@import '../sass/index.scss';
+
+.pages {
+  height: 100%;
+  @include grid-layout(60px auto 50px, null, null);
+
+  header {
+    background-color: #d2082d;
+  }
+
+  main {
+    background-color: #ffffff;
+    overflow: auto;
+  }
+
+  footer {
+    background-color: #d2082d;
+  }
+}

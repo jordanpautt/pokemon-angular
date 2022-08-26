@@ -1,0 +1,19 @@
+<div class="card-pokemon">
+  <header>
+    <span
+      ><img [src]="this.pokemonData.img" alt="" width="40" height="40"
+    /></span>
+    <div>
+      <h4>{{ this.pokemonData.name }}</h4>
+      <p>N°{{ this.pokemonData.id }}</p>
+    </div>
+  </header>
+  <main>
+    <img [src]="this.pokemonData.img" alt="" />
+  </main>
+  <footer>
+    <div *ngFor="let item of this.pokemonData.types" class="chips-type">
+      <p>{{ item }}</p>
+    </div>
+  </footer>
+</div>

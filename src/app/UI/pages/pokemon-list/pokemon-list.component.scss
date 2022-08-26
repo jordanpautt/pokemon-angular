@@ -1,0 +1,9 @@
+@import '../../sass/index.scss';
+
+.page-home {
+  display: grid;
+  gap: 24px;
+  padding: 32px 60px;
+
+  @include grid-layout(null, repeat(auto-fill, minmax(180px, 1fr)), null);
+}

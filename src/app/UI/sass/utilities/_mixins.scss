@@ -1,0 +1,37 @@
+@mixin aling-flex($justify-content: center, $align-items: center) {
+  display: flex;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+@mixin aling-grid(
+  $gap: 0px,
+  $justify-content: flex-start,
+  $align-items: flex-start
+) {
+  display: grid;
+  gap: $gap;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+@mixin grid-layout($grid-rows: auto, $grid-columns: auto, $grid-area: auto) {
+  display: grid;
+  grid-template-columns: $grid-columns;
+  grid-template-rows: $grid-rows;
+  grid-area: $grid-area;
+}
+
+@mixin card(
+  $width: 100px,
+  $height: 100px,
+  $border: none,
+  $borderRadius: 6px,
+  $box-shadow
+) {
+  border: $border;
+  width: $width;
+  height: $height;
+  border-radius: $borderRadius;
+  box-shadow: $box-shadow;
+}
