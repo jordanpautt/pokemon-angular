@@ -17,7 +17,7 @@ export class PokemonService {
   public readAllPokemon(): Observable<IPokemonInfo[]> {
     const optionApi: IOptionApi = {
       method: 'get',
-      path: 'pokemon?limit=12'
+      path: 'pokemon?limit=100'
     };
 
     const { url, method } = this.apiModule.runSendData(optionApi);

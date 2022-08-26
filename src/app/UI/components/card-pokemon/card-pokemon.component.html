@@ -13,7 +13,7 @@
   </main>
   <footer>
     <div *ngFor="let item of this.pokemonData.types" class="chips-type">
-      <p>{{ item }}</p>
+      <p [ngStyle]="{ background: this.getColorType(item) }">{{ item }}</p>
     </div>
   </footer>
 </div>
