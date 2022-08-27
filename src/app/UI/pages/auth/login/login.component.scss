@@ -1,0 +1,63 @@
+@import '../../../sass/index.scss';
+
+.auth-container {
+  width: 100%;
+  height: 100vh;
+
+  align-items: center;
+  justify-items: center;
+  @include grid-layout(null, 2fr 2fr, null);
+
+  .card-login {
+    background-color: $background-card-pokemon;
+    padding: 2rem 3rem 5.5rem 3rem;
+    @include card(370px, 380px, null, 25px, $box-shadow-card-pokemon);
+    @include grid-layout(1fr 2fr 1fr, null, null);
+  }
+
+  header {
+    text-align: center;
+    @include font-styles('default', 500, 16px, #2d4857);
+  }
+
+  main {
+    @include aling-flex(flex-start, flex-start, 12px, column);
+
+    label {
+      width: 100%;
+      @include aling-flex(flex-start, flex-start, 4px, column);
+      @include font-styles('default', 400, 0.9rem, $color-form-label);
+      input {
+        height: 40px;
+        width: 100%;
+        padding: 0 9px 0 9px;
+        border-radius: 8px;
+        color: $color-text-general;
+        background-color: $background-input;
+        border: 1px solid $color-border-input;
+      }
+    }
+  }
+
+  footer {
+    margin-top: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    button {
+      height: 50px;
+      width: 100px;
+      cursor: pointer;
+      border-radius: 12px;
+
+      &:hover {
+        box-shadow: -1px 1px 3px 3px inset rgba(0, 0, 0, 0.377);
+      }
+    }
+  }
+
+  .img-content {
+    margin-right: 120px;
+  }
+}
