@@ -11,4 +11,6 @@ export interface IPokemonInfo {
   abilities: string[];
   types: string[];
   img: string;
+  height: number;
+  weight: number;
 }

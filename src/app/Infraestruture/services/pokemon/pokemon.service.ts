@@ -28,22 +28,34 @@ export class PokemonService {
         data.results.forEach((data) => {
           this.http
             .get(data.url)
-            .subscribe(({ id, name, abilities, types, sprites }: any) => {
-              const abilitiesName = abilities.map((abilitiesData: any) => {
-                return abilitiesData.ability.name;
-              });
-              const typesName = types.map((typeData: any) => {
-                return typeData.type.name;
-              });
-              const pokemonData: IPokemonInfo = {
+            .subscribe(
+              ({
                 id,
                 name,
-                abilities: abilitiesName,
-                types: typesName,
-                img: sprites.front_default
-              };
-              pokemon.push(pokemonData);
-            });
+                abilities,
+                types,
+                sprites,
+                height,
+                weight
+              }: any) => {
+                const abilitiesName = abilities.map((abilitiesData: any) => {
+                  return abilitiesData.ability.name;
+                });
+                const typesName = types.map((typeData: any) => {
+                  return typeData.type.name;
+                });
+                const pokemonData: IPokemonInfo = {
+                  id,
+                  name,
+                  abilities: abilitiesName,
+                  types: typesName,
+                  img: sprites.front_default,
+                  height,
+                  weight
+                };
+                pokemon.push(pokemonData);
+              }
+            );
         });
         return pokemon;
       })
@@ -60,7 +72,7 @@ export class PokemonService {
     const { url } = this.apiModule.runSendData(optionsApi);
 
     return this.http.get<any>(url).pipe(
-      map(({ id, name, abilities, types, sprites }: any) => {
+      map(({ id, name, abilities, types, sprites, height, weight }: any) => {
         const abilitiesName = abilities.map((abilitiesData: any) => {
           return abilitiesData.ability.name;
         });
@@ -72,7 +84,9 @@ export class PokemonService {
           name,
           abilities: abilitiesName,
           types: typesName,
-          img: sprites.front_default
+          img: sprites.front_default,
+          height,
+          weight
         };
         return pokemonData;
       })

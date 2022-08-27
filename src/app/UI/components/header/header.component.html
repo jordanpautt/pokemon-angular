@@ -1,5 +1,5 @@
 <div class="header">
-  <p class="circle-big"></p>
+  <p class="circle-big" style="cursor: pointer" (click)="this.pageHome()"></p>
   <p
     *ngFor="let item of this.colorCircleSmall"
     [ngStyle]="{ background: item }"

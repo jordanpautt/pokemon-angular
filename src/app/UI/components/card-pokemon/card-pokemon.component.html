@@ -1,4 +1,4 @@
-<div class="card-pokemon">
+<div class="card-pokemon" (click)="this.pokemonDetails(this.pokemonData.id)">
   <header>
     <span
       ><img [src]="this.pokemonData.img" alt="" width="40" height="40"
@@ -13,7 +13,9 @@
   </main>
   <footer>
     <div *ngFor="let item of this.pokemonData.types" class="chips-type">
-      <p [ngStyle]="{ background: this.getColorType(item) }">{{ item }}</p>
+      <p [ngStyle]="{ background: this.tools.getColorType(item) }">
+        {{ item }}
+      </p>
     </div>
   </footer>
 </div>

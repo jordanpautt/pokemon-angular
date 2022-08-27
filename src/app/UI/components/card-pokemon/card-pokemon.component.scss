@@ -1,47 +1,45 @@
 @import '../../sass/index.scss';
 
 .card-pokemon {
-  height: 260px;
   padding: 4px 6px;
-  border-radius: 12px;
-  background-color: #fffbfb;
+  background-color: $background-card-pokemon;
   cursor: pointer;
-  box-shadow: 2px 2px 12px 2px rgba(71, 73, 75, 0.288),
-    2px 4px 8px 2px rgba(0, 64, 128, 0.247);
+  @include card(auto, 260px, none, 12px, $box-shadow-card-pokemon);
   @include grid-layout(50px auto 50px, null, null);
+
   &:hover {
     transform: scale(1.1);
     transition: ease 0.5s;
   }
 
   header {
-    display: flex;
-    gap: 2px;
-    background-color: #d1cece56;
+    @include aling-flex(flex-start, center, 2px);
+    background-color: $background-header-card;
     border-radius: 8px;
     border: 1px solid rgba(0, 0, 0, 0.082);
-    box-shadow: -1px 1px 2px 1px inset rgba(0, 0, 0, 0.219);
+    box-shadow: $box-shadow-header-card;
     div {
-      color: black;
+      font-family: $font-roboto;
+      color: rgb(116, 113, 113);
+
+      p {
+        font-size: 14px;
+      }
     }
   }
 
   main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include aling-flex(center, center);
   }
 
   footer {
-    display: flex;
-    gap: 4px;
-    justify-content: center;
-    align-items: center;
+    @include aling-flex(center, center, 4px);
 
     p {
       padding: 6px 14px;
       border-radius: 60px;
-      color: #ffffff;
+      font-family: $font-roboto;
+      color: #eeeded;
     }
   }
 }

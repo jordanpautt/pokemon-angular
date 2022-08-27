@@ -1,1 +1,41 @@
-<p>pokemon-details works!</p>
+<div class="page-details">
+  <div class="details">
+    <div class="info-pokemon">
+      <label for="height">
+        Height
+        <p id="height">{{ this.pokemonData.height }}</p>
+      </label>
+
+      <label for="weight">
+        Weight
+        <p id="weight">{{ this.pokemonData.weight }}</p>
+      </label>
+
+      <label for="abilities">
+        Abilities
+        <p [ngStyle]="{ background: '#99FF66', borderRadius: '6px' }">
+          {{ this.pokemonData.abilities.join(', ') }}
+        </p></label
+      >
+
+      <label for="type">
+        Types
+        <div style="display: flex; gap: 6px">
+          <p
+            *ngFor="let item of this.pokemonData.types"
+            [ngStyle]="{
+              background: this.tool.getColorType(item),
+              borderRadius: '40px'
+            }"
+          >
+            {{ item }}
+          </p>
+        </div>
+      </label>
+    </div>
+    <div class="img-pokemon">
+      <h1>{{ this.pokemonData.name.toUpperCase() }}</h1>
+      <img [src]="this.pokemonData.img" alt="" width="300" height="300" />
+    </div>
+  </div>
+</div>

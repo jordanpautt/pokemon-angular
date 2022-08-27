@@ -1,7 +1,8 @@
-@mixin aling-flex($justify-content: center, $align-items: center) {
+@mixin aling-flex($justify-content: center, $align-items: center, $gap: 0) {
   display: flex;
   justify-content: $justify-content;
   align-items: $align-items;
+  gap: $gap;
 }
 
 @mixin aling-grid(
@@ -33,5 +34,19 @@
   width: $width;
   height: $height;
   border-radius: $borderRadius;
+  box-shadow: $box-shadow;
+}
+
+@mixin circle(
+  $height: auto,
+  $width: auto,
+  $border-radius: 0,
+  $background,
+  $box-shadow
+) {
+  height: $height;
+  width: $width;
+  border-radius: $border-radius;
+  background-color: $background;
   box-shadow: $box-shadow;
 }

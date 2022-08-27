@@ -1,0 +1,45 @@
+@import '../../sass/index.scss';
+
+.page-details {
+  height: 100%;
+  @include aling-flex();
+
+  .details {
+    background-color: rgba(192, 191, 191, 0.37);
+
+    @include card(70%, 90%, none, 15px, $box-shadow-card-pokemon);
+    @include grid-layout(null, 1fr 1fr, null);
+
+    .img-pokemon {
+      @include aling-flex();
+      flex-direction: column;
+
+      h1 {
+        font-family: $font-manrope;
+        font-weight: 100 !important;
+        color: $color-text-general;
+      }
+    }
+
+    .info-pokemon {
+      width: 60%;
+      display: flex;
+      gap: 24px;
+      flex-direction: column;
+      margin: 25% 25%;
+      label {
+        font-family: $font-manrope;
+        font-size: 18px;
+        color: $color-text-general;
+        display: flex;
+        gap: 32px;
+        justify-content: space-between;
+        p {
+          font-size: 14px;
+          color: #2f4653;
+          padding: 4px 6px;
+        }
+      }
+    }
+  }
+}
