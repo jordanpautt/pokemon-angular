@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  hostname: 'https://pokeapi.co/api/v2'
+  hostname: `http://${window.location.hostname}:3001`
 };
 
 /*

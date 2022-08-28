@@ -17,47 +17,14 @@ export class PokemonService {
   public readAllPokemon(): Observable<IPokemonInfo[]> {
     const optionApi: IOptionApi = {
       method: 'get',
-      path: 'pokemon?limit=100'
+      path: 'api/pokemon'
     };
 
     const { url, method } = this.apiModule.runSendData(optionApi);
 
-    return this.http.get<IPokemon>(url).pipe(
-      map((data) => {
-        const pokemon: IPokemonInfo[] = [];
-        data.results.forEach((data) => {
-          this.http
-            .get(data.url)
-            .subscribe(
-              ({
-                id,
-                name,
-                abilities,
-                types,
-                sprites,
-                height,
-                weight
-              }: any) => {
-                const abilitiesName = abilities.map((abilitiesData: any) => {
-                  return abilitiesData.ability.name;
-                });
-                const typesName = types.map((typeData: any) => {
-                  return typeData.type.name;
-                });
-                const pokemonData: IPokemonInfo = {
-                  id,
-                  name,
-                  abilities: abilitiesName,
-                  types: typesName,
-                  img: sprites.front_default,
-                  height,
-                  weight
-                };
-                pokemon.push(pokemonData);
-              }
-            );
-        });
-        return pokemon;
+    return this.http.get<{ result: IPokemonInfo[] }>(url).pipe(
+      map(({ result }) => {
+        return result;
       })
     );
   }
@@ -65,30 +32,15 @@ export class PokemonService {
   public readOnePokemon(id: number): Observable<IPokemonInfo> {
     const optionsApi: IOptionApi = {
       method: 'get',
-      path: 'pokemon',
+      path: 'api/pokemon',
       param: id
     };
 
     const { url } = this.apiModule.runSendData(optionsApi);
 
-    return this.http.get<any>(url).pipe(
-      map(({ id, name, abilities, types, sprites, height, weight }: any) => {
-        const abilitiesName = abilities.map((abilitiesData: any) => {
-          return abilitiesData.ability.name;
-        });
-        const typesName = types.map((typeData: any) => {
-          return typeData.type.name;
-        });
-        const pokemonData: IPokemonInfo = {
-          id,
-          name,
-          abilities: abilitiesName,
-          types: typesName,
-          img: sprites.front_default,
-          height,
-          weight
-        };
-        return pokemonData;
+    return this.http.get<{ result: IPokemonInfo }>(url).pipe(
+      map(({ result }) => {
+        return result;
       })
     );
   }
