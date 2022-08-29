@@ -5,6 +5,11 @@ import { RegisterComponent } from './UI/pages/auth/register/register.component';
 
 const routes: Routes = [
   {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'login'
+  },
+  {
     path: 'login',
     component: LoginComponent
   },

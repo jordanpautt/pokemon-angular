@@ -18,7 +18,7 @@ export class ApiModule {
       : `${environment.hostname}/${path}`;
 
     if (query) {
-      this.queryParserfilter(query, paramsQuery);
+      this.queryParser(query, paramsQuery);
     }
 
     return {
@@ -28,7 +28,7 @@ export class ApiModule {
     };
   }
 
-  private queryParserfilter(
+  private queryParser(
     query: Array<{ type: string; value: string }>,
     paramsQuery: HttpParams
   ): HttpParams {
