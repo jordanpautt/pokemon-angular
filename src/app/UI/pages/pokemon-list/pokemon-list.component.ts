@@ -1,10 +1,9 @@
 import { selectPokemonsState } from './../../../Infraestruture/store/pokemons/pokemons.selectors';
-import { readAllPokemon } from './../../../Infraestruture/store/pokemons/pokemon.actions';
+import { readAllPokemon } from '../../../Infraestruture/store/pokemons/pokemons.actions';
 import { IPokemonInfo } from 'src/app/DOMAIN/interface/api';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { PokemonService } from 'src/app/Infraestruture/services/pokemon/pokemon.service';
-import { Subscription, Observable } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -14,19 +13,14 @@ import { Subscription, Observable } from 'rxjs';
 export class PokemonListComponent implements OnInit, OnDestroy {
   pokemonsList: IPokemonInfo[] = [];
   subcription!: Subscription;
-  constructor(private pokemonService: PokemonService) {}
+  constructor(private store: Store) {}
 
   ngOnInit(): void {
-    this.subcription = this.pokemonService
-      .readAllPokemon()
-      .subscribe((data) => {
-        this.pokemonsList = data;
+    this.subcription = this.store
+      .pipe(select(selectPokemonsState))
+      .subscribe(({ pokemons }) => {
+        this.pokemonsList = pokemons;
       });
-    // this.store.dispatch(readAllPokemon());
-
-    // this.store.pipe(select(selectPokemonsState)).subscribe((data) => {
-    //   console.log(data);
-    // });
   }
 
   ngOnDestroy(): void {

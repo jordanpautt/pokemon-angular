@@ -1,4 +1,6 @@
+import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
+import { readAllPokemon } from 'src/app/Infraestruture/store/pokemons/pokemons.actions';
 
 @Component({
   selector: 'app-router-control',
@@ -6,10 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./router-control.component.scss']
 })
 export class RouterControlComponent implements OnInit {
-
-  constructor() { }
+  constructor(private store: Store) {}
 
   ngOnInit(): void {
+    this.store.dispatch(readAllPokemon());
   }
-
 }

@@ -1,24 +1,22 @@
 import { createReducer, on } from '@ngrx/store';
 
 import { IPokemonInfo } from 'src/app/DOMAIN/interface/api';
-import * as pokemonsActions from './pokemon.actions';
+import * as pokemonsActions from './pokemons.actions';
 
 export const pokemonsFeatureKey = 'pokemons';
 
 export interface State {
-  pokemons: IPokemonInfo[] | null;
+  pokemons: IPokemonInfo[];
   error: any;
 }
 
 export const initialState: State = {
-  pokemons: null,
+  pokemons: [],
   error: null
 };
 export const reducer = createReducer(
   initialState,
   on(pokemonsActions.readAllPokemonSuccess, (state, { pokemons }) => {
-    console.log('reducer', pokemons);
-
     return {
       ...state,
       pokemons: [...pokemons],

@@ -1,8 +1,11 @@
+import { selectPokemonState } from './../../../Infraestruture/store/pokemon/pokemon.selectors';
+import { readOnePokemon } from './../../../Infraestruture/store/pokemon/pokemon.actions';
 import { CommonTools } from './../../../Infraestruture/tools/common.tools';
 import { IPokemonInfo } from './../../../DOMAIN/interface/api/pokemon.interface';
-import { PokemonService } from './../../../Infraestruture/services/pokemon/pokemon.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Store, select } from '@ngrx/store';
+import { selectPokemonsState } from 'src/app/Infraestruture/store/pokemons/pokemons.selectors';
 
 @Component({
   selector: 'app-pokemon-details',
@@ -19,17 +22,17 @@ export class PokemonDetailsComponent implements OnInit {
     height: 0,
     weight: 0
   };
-
   constructor(
     private routeActive: ActivatedRoute,
-    private servicePokemon: PokemonService,
+    private store: Store,
     public tool: CommonTools
   ) {}
 
   ngOnInit(): void {
     this.routeActive.params.subscribe(({ id }) => {
-      this.servicePokemon.readOnePokemon(id).subscribe((data) => {
-        this.pokemonData = data;
+      this.store.dispatch(readOnePokemon({ id }));
+      this.store.pipe(select(selectPokemonState)).subscribe(({ pokemon }) => {
+        this.pokemonData = pokemon;
       });
     });
   }

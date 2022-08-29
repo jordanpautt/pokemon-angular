@@ -9,14 +9,6 @@ import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [PokemonListComponent],
-  imports: [
-    CommonModule,
-    ComponentModule,
-    StoreModule.forFeature(
-      fromPokemons.pokemonsFeatureKey,
-      fromPokemons.reducer
-    ),
-    EffectsModule.forFeature([PokemonsEffects])
-  ]
+  imports: [CommonModule, ComponentModule]
 })
 export class PokemonListModule {}
